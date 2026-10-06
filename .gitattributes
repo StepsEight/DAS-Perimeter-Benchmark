@@ -4,3 +4,8 @@
 *.joblib binary
 *.mat binary
 *.npz binary
+# Preserve the exact bytes registered in data/manifest.json on every platform.
+data/*.csv -text
+data/*.json -text
+data/splits/*.csv -text
+LICENSE-DATA -text
