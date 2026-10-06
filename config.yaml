@@ -1,0 +1,94 @@
+data_root: data/spatiotemporal
+sampling_rate: 2000
+sampling_rate_hz: 2000
+expected_shape:
+- 2000
+- 50
+max_instances_per_class: 800
+selected_channel_human: 25
+selected_channel_python: 24
+seed: 42
+split_ratio:
+- 0.6
+- 0.2
+- 0.2
+device: auto
+restore_amplitude: true
+normalization: valid_region_sample_standardization_with_zero_padding
+spatial_sampling_interval_m: 1.0
+gauge_length_m: 10.0
+class_names:
+- background
+- digging
+- raining
+- vehicle
+- walking
+paths:
+  data_dir: data
+  output_root: runs
+  report_root: runs/reports
+dataset:
+  max_instances_per_class: 800
+  expected_shape:
+  - 2000
+  - 50
+  restore_amplitude: true
+  chronological_group_split: true
+  duplicate_key:
+  - file_path
+  - instance_index
+training:
+  epochs: 100
+  batch_size: 32
+  optimizer: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  scheduler: cosine
+  dropout: 0.3
+  amp: true
+  amp_dtype: float16
+  deterministic: true
+  tf32: false
+  num_workers: 0
+  torch_threads: 4
+  pin_memory: true
+  early_stopping: false
+  max_run_hours: 12
+  resume: false
+  augmentation: none
+stft:
+  fs: 2000
+  window: hann
+  nperseg: 256
+  noverlap: 192
+  nfft: 256
+  boundary: zeros
+  padded: true
+  representation: natural_log_power
+  normalize_waveform_first: true
+features:
+  fs: 2000
+  nperseg: 256
+  noverlap: 128
+  window: hann
+  detrend: constant
+  bands:
+  - - 0
+    - 500
+  - - 500
+    - 1000
+  use_full_padded_waveform: true
+svm:
+  C:
+  - 0.1
+  - 1
+  - 10
+  - 100
+  gamma:
+  - scale
+  - 0.001
+  - 0.01
+  - 0.1
+  - 1.0
+  class_weight: null
+epsilon: 1.0e-08

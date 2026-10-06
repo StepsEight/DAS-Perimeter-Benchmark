@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "date": "2026-10-06",
+  "scope": "Five paper classes and four paper baselines",
+  "instances": 4000,
+  "source_recordings": 1000,
+  "cross_split_source_groups": 0,
+  "native_matlab_v73_spatiotemporal_files": 5,
+  "all_exported_spatiotemporal_values_equal_to_source": true,
+  "regenerated_waveforms_max_absolute_difference": 0.0,
+  "regenerated_features_max_absolute_difference": 0.0,
+  "regenerated_stft_max_absolute_difference": 0.0,
+  "original_best_model_weights_preserved": true,
+  "paper_validation_and_test_metrics_recalculated_from_saved_predictions": true,
+  "validation_checkpoint_smoke_check": {
+    "svm": {
+      "validation_samples_checked": 40,
+      "matches_saved_predictions": true
+    },
+    "cnn1d": {
+      "validation_samples_checked": 40,
+      "matches_saved_predictions": true
+    },
+    "cnn2d": {
+      "validation_samples_checked": 40,
+      "matches_saved_predictions": true
+    },
+    "stft_cnn": {
+      "validation_samples_checked": 40,
+      "matches_saved_predictions": true
+    }
+  },
+  "python_reader": "passed",
+  "matlab_reader": "passed",
+  "single_bin_conversion_patches_checked": 4,
+  "single_bin_conversion_matches_original": true,
+  "protocol_unit_tests_passed": 7,
+  "archive_extracted_and_all_member_hashes_verified": true,
+  "absolute_local_paths_in_release_mat_text": 0,
+  "original_training_loop_and_network_architectures_preserved": true,
+  "new_model_training": false,
+  "new_test_inference": false
+}

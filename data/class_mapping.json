@@ -1,0 +1,30 @@
+{
+  "class_names": [
+    "background",
+    "digging",
+    "raining",
+    "vehicle",
+    "walking"
+  ],
+  "class_to_index": {
+    "background": 0,
+    "digging": 1,
+    "raining": 2,
+    "vehicle": 3,
+    "walking": 4
+  },
+  "index_to_class": {
+    "0": "background",
+    "1": "digging",
+    "2": "raining",
+    "3": "vehicle",
+    "4": "walking"
+  },
+  "display_names": {
+    "background": "Sunny background",
+    "raining": "Rainy background",
+    "walking": "Walking",
+    "digging": "Digging",
+    "vehicle": "Bicycle"
+  }
+}

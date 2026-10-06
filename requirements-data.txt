@@ -1,0 +1,6 @@
+# Python 3.12; reading, verification and preprocessing without PyTorch.
+numpy==2.3.5
+scipy==1.16.3
+pandas==2.3.3
+h5py==3.15.1
+PyYAML==6.0.3

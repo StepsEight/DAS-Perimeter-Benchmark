@@ -1,0 +1,426 @@
+{
+  "svm": {
+    "method": "svm",
+    "best_epoch": null,
+    "parameter_count": null,
+    "seed": 42,
+    "class_names": [
+      "background",
+      "digging",
+      "raining",
+      "vehicle",
+      "walking"
+    ],
+    "selection_metric": "validation macro_f1",
+    "tie_policy": "first grid candidate",
+    "validation": {
+      "accuracy": 0.88375,
+      "macro_precision": 0.8879061329470701,
+      "macro_recall": 0.88375,
+      "macro_f1": 0.8840618504129291,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 0.9333333333333333,
+          "recall": 0.9625,
+          "f1": 0.9476923076923077,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 0.9714285714285714,
+          "recall": 0.85,
+          "f1": 0.9066666666666666,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 0.9578313253012049,
+          "recall": 0.99375,
+          "f1": 0.9754601226993865,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 0.831081081081081,
+          "recall": 0.76875,
+          "f1": 0.7987012987012987,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.7458563535911602,
+          "recall": 0.84375,
+          "f1": 0.7917888563049853,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "val"
+    },
+    "test": {
+      "accuracy": 0.75875,
+      "macro_precision": 0.8051743250970764,
+      "macro_recall": 0.75875,
+      "macro_f1": 0.7636275824998766,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 0.9662162162162162,
+          "recall": 0.89375,
+          "f1": 0.9285714285714286,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 0.9540229885057471,
+          "recall": 0.51875,
+          "f1": 0.6720647773279352,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 1.0,
+          "recall": 0.975,
+          "f1": 0.9873417721518988,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 0.5697674418604651,
+          "recall": 0.6125,
+          "f1": 0.5903614457831325,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.5358649789029536,
+          "recall": 0.79375,
+          "f1": 0.6397984886649875,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "test"
+    },
+    "test_evaluation_count": 1
+  },
+  "cnn1d": {
+    "method": "cnn1d",
+    "best_epoch": 100,
+    "parameter_count": 36357,
+    "seed": 42,
+    "class_names": [
+      "background",
+      "digging",
+      "raining",
+      "vehicle",
+      "walking"
+    ],
+    "selection_metric": "validation macro_f1",
+    "tie_policy": "earliest epoch",
+    "validation": {
+      "accuracy": 0.98625,
+      "macro_precision": 0.9865970315977071,
+      "macro_recall": 0.9862500000000001,
+      "macro_f1": 0.9862176526843791,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 0.9876543209876543,
+          "recall": 1.0,
+          "f1": 0.9937888198757764,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 1.0,
+          "recall": 0.95,
+          "f1": 0.9743589743589743,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 0.9937106918238994,
+          "recall": 0.9875,
+          "f1": 0.9905956112852664,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 0.9937888198757764,
+          "recall": 1.0,
+          "f1": 0.9968847352024922,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.9578313253012049,
+          "recall": 0.99375,
+          "f1": 0.9754601226993865,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "val"
+    },
+    "test": {
+      "accuracy": 0.84875,
+      "macro_precision": 0.8858489806976163,
+      "macro_recall": 0.8487500000000001,
+      "macro_f1": 0.8409691341564571,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 1.0,
+          "recall": 0.4875,
+          "f1": 0.6554621848739496,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 1.0,
+          "recall": 0.84375,
+          "f1": 0.9152542372881356,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 0.6855895196506551,
+          "recall": 0.98125,
+          "f1": 0.8071979434447301,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 0.949685534591195,
+          "recall": 0.94375,
+          "f1": 0.9467084639498433,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.7939698492462312,
+          "recall": 0.9875,
+          "f1": 0.8802228412256268,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "test"
+    },
+    "test_evaluation_count": 1
+  },
+  "cnn2d": {
+    "method": "cnn2d",
+    "best_epoch": 10,
+    "parameter_count": 168069,
+    "seed": 42,
+    "class_names": [
+      "background",
+      "digging",
+      "raining",
+      "vehicle",
+      "walking"
+    ],
+    "selection_metric": "validation macro_f1",
+    "tie_policy": "earliest epoch",
+    "validation": {
+      "accuracy": 0.99875,
+      "macro_precision": 0.9987577639751553,
+      "macro_recall": 0.99875,
+      "macro_f1": 0.9987499877928496,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 1.0,
+          "recall": 0.99375,
+          "f1": 0.9968652037617555,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.9937888198757764,
+          "recall": 1.0,
+          "f1": 0.9968847352024922,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "val"
+    },
+    "test": {
+      "accuracy": 0.88625,
+      "macro_precision": 0.9051845263221372,
+      "macro_recall": 0.8862500000000001,
+      "macro_f1": 0.8809279740367881,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 1.0,
+          "recall": 0.5875,
+          "f1": 0.7401574803149606,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 1.0,
+          "recall": 0.925,
+          "f1": 0.961038961038961,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 0.8206521739130435,
+          "recall": 0.94375,
+          "f1": 0.877906976744186,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 0.7766990291262136,
+          "recall": 1.0,
+          "f1": 0.8743169398907104,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.9285714285714286,
+          "recall": 0.975,
+          "f1": 0.9512195121951219,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "test"
+    },
+    "test_evaluation_count": 1
+  },
+  "stft_cnn": {
+    "method": "stft_cnn",
+    "best_epoch": 79,
+    "parameter_count": 93765,
+    "seed": 42,
+    "class_names": [
+      "background",
+      "digging",
+      "raining",
+      "vehicle",
+      "walking"
+    ],
+    "selection_metric": "validation macro_f1",
+    "tie_policy": "earliest epoch",
+    "validation": {
+      "accuracy": 0.96875,
+      "macro_precision": 0.968636914084002,
+      "macro_recall": 0.96875,
+      "macro_f1": 0.9685727428390271,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 0.9875776397515528,
+          "recall": 0.99375,
+          "f1": 0.9906542056074766,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 0.9748427672955975,
+          "recall": 0.96875,
+          "f1": 0.9717868338557993,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 0.9696969696969697,
+          "recall": 1.0,
+          "f1": 0.9846153846153847,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 0.9545454545454546,
+          "recall": 0.91875,
+          "f1": 0.9363057324840764,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.9565217391304348,
+          "recall": 0.9625,
+          "f1": 0.9595015576323987,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "val"
+    },
+    "test": {
+      "accuracy": 0.95625,
+      "macro_precision": 0.9571531816749278,
+      "macro_recall": 0.95625,
+      "macro_f1": 0.9563325414627055,
+      "per_class": [
+        {
+          "class_name": "background",
+          "precision": 0.993421052631579,
+          "recall": 0.94375,
+          "f1": 0.967948717948718,
+          "support": 160
+        },
+        {
+          "class_name": "digging",
+          "precision": 0.9875,
+          "recall": 0.9875,
+          "f1": 0.9875,
+          "support": 160
+        },
+        {
+          "class_name": "raining",
+          "precision": 0.9401197604790419,
+          "recall": 0.98125,
+          "f1": 0.9602446483180428,
+          "support": 160
+        },
+        {
+          "class_name": "vehicle",
+          "precision": 0.9101796407185628,
+          "recall": 0.95,
+          "f1": 0.9296636085626911,
+          "support": 160
+        },
+        {
+          "class_name": "walking",
+          "precision": 0.9545454545454546,
+          "recall": 0.91875,
+          "f1": 0.9363057324840764,
+          "support": 160
+        }
+      ],
+      "n_samples": 800,
+      "split": "test"
+    },
+    "test_evaluation_count": 1
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "format_version": 1,
+  "files": [
+    {
+      "path": "checkpoints/cnn1d.pt",
+      "bytes": 154660,
+      "sha256": "b1255e7a86338a638eee32cfd4b08d79dfcea0977316882a3a2097452c265fba",
+      "epoch": 100,
+      "parameter_count": 36357,
+      "source_best_checkpoint_sha256": "cf460c94e18f7a127365b320d385925fdcb7830c3a6f40c7153c102307d82d34",
+      "weights_equal_to_original": true
+    },
+    {
+      "path": "checkpoints/cnn2d.pt",
+      "bytes": 681508,
+      "sha256": "8bef21a29fcc4e2b93541d54411455b5782210e36aa7b15972a007b1f9d23ab0",
+      "epoch": 10,
+      "parameter_count": 168069,
+      "source_best_checkpoint_sha256": "e146d37e6ef0ecbc2015cb9a2ecb8f9b6887800c294907dd726892cb0f95839a",
+      "weights_equal_to_original": true
+    },
+    {
+      "path": "checkpoints/stft_cnn.pt",
+      "bytes": 385595,
+      "sha256": "5ef51ecd041f0a758df5bbad1265950b96d0ec53f64f489501ca6b71d0b1ebc0",
+      "epoch": 79,
+      "parameter_count": 93765,
+      "source_best_checkpoint_sha256": "1c69a94cdca694a19ad771635fc88530511f5da5b8fa44f8c5ef2c981a4e8db9",
+      "weights_equal_to_original": true
+    },
+    {
+      "path": "checkpoints/svm.joblib",
+      "bytes": 136571,
+      "sha256": "4c5d6de3e3aa752a2ad1ab5395252dc3121da689710e807200526508d7f24436",
+      "source_best_model_sha256": "e6b67a1266955769e4235685f9a95a53a9e032b4f417eb832c84fda30aeda5ff",
+      "support_vectors": 711,
+      "weights_equal_to_original": true
+    }
+  ]
+}
