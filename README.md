@@ -9,7 +9,7 @@ Public DAS event-recognition datasets often focus on a particular data represent
 - **Start small:** [train the feature-based SVM in Colab](https://colab.research.google.com/github/StepsEight/DAS-Perimeter-Benchmark/blob/main/notebooks/quickstart.ipynb) using the included CSV. No full dataset download or GPU is needed.
 - **Get all representations:** the [dataset download (about 1.55 GB)](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.2) contains the MAT files, STFT arrays, feature vectors, labels and fixed splits. Code and model checkpoints are in this repository.
 - **Compare consistently:** use the provided train/validation/test splits and select models on the validation set. See the [benchmark protocol](docs/benchmark.md).
-- **Use and contribute:** data and trained weights require attribution and noncommercial use. Questions, corrections and comparable benchmark results are welcome through [Issues](https://github.com/StepsEight/DAS-Perimeter-Benchmark/issues).
+- **Access and licensing:** the complete dataset is publicly downloadable without registration, an access request, or author approval. Data and trained weights are licensed under [CC BY-NC 4.0](LICENSE-DATA), requiring attribution and noncommercial use. Supporting code is open-source under [MIT](LICENSE).
 
 ## 🚀 Overview
 
@@ -115,4 +115,4 @@ See [contribution guidance](CONTRIBUTING.md) for reporting a comparable result.
 - **Code:** Licensed under [MIT](LICENSE).
 - **Dataset, Model Checkpoints, and Documentation:** Licensed under [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](LICENSE-DATA). This also covers the released results and accompanying figures.
 
-> **Note:** The MIT code license does not grant commercial rights to the underlying data or trained weights. For commercial licensing inquiries, please contact: `ying-huan.li@connect.polyu.hk`.
+> **Note:** No separate permission is required for uses permitted by CC BY-NC 4.0. Commercial use is not permitted under this license, and the MIT code license does not grant commercial rights to the underlying data or trained weights. For separate commercial licensing inquiries, please contact: `ying-huan.li@connect.polyu.hk`.
