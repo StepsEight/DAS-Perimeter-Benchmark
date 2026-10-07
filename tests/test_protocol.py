@@ -1,6 +1,7 @@
 """Small protocol checks; no training and no dataset download required."""
 from pathlib import Path
 import importlib.util
+import hashlib
 import json
 import sys
 import tempfile
@@ -75,6 +76,25 @@ class ProtocolTests(unittest.TestCase):
             self.assertEqual(parameter_count(model),count)
             with torch.inference_mode():
                 self.assertEqual(tuple(model(torch.zeros(shape)).shape),(1,5))
+
+    def test_archive_license_mapping_preserves_code_license(self):
+        spec=importlib.util.spec_from_file_location('download_data',ROOT/'scripts/download_data.py')
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);destination=root/'checkout';destination.mkdir()
+            (destination/'LICENSE').write_text('MIT code license',encoding='utf-8')
+            payload=b'CC BY-NC data license'
+            archive=root/'data.zip'
+            with zipfile.ZipFile(archive,'w') as z:z.writestr('LICENSE',payload)
+            record={'path':'LICENSE-DATA','archive_path':'LICENSE','bytes':len(payload),
+                    'sha256':hashlib.sha256(payload).hexdigest(),'in_archive':True}
+            module.extract_verified(archive,{'files':[record]},destination)
+            self.assertEqual((destination/'LICENSE').read_text(),'MIT code license')
+            self.assertEqual((destination/'LICENSE-DATA').read_bytes(),payload)
+            record['path']='../escape.txt'
+            with self.assertRaisesRegex(ValueError,'escapes'):
+                module.extract_verified(archive,{'files':[record]},destination)
+            self.assertFalse((root/'escape.txt').exists())
 
     def test_archive_traversal_rejected(self):
         spec=importlib.util.spec_from_file_location('download_data',ROOT/'scripts/download_data.py')

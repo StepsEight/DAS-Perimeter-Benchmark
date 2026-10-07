@@ -15,10 +15,10 @@ authors:
   - family-names: Lau
     given-names: Alan Pak Tao
     affiliation: The Hong Kong Polytechnic University
-version: 1.0.0
-date-released: 2026-10-06
+version: 1.0.1
+date-released: 2026-10-07
 repository-code: "https://github.com/StepsEight/DAS-Perimeter-Benchmark"
-url: "https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.0"
+url: "https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1"
 license: CC-BY-NC-4.0
 keywords:
   - distributed acoustic sensing

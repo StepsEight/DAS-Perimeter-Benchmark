@@ -49,7 +49,7 @@ def verify_paths(paths, config=None):
 
 
 def validate_metadata(frame, split_frames):
-    """The official protocol is fixed at 4000 ordered samples and 1000 BIN groups."""
+    """The official protocol has 4000 ordered samples and 1000 recording groups."""
     if len(frame) != 4000 or not frame.sample_id.is_unique:
         raise ValueError('Expected 4000 unique sample IDs')
     if not np.array_equal(frame.row_index.to_numpy(), np.arange(4000)):
@@ -66,7 +66,7 @@ def validate_metadata(frame, split_frames):
         if rows.split.tolist() != ['train']*480 + ['val']*160 + ['test']*160:
             raise ValueError(f'Chronological split changed: {name}')
         if not np.array_equal(rows.source_bin_index.to_numpy(), np.repeat(np.arange(1, 201), 4)):
-            raise ValueError(f'Source BIN order changed: {name}')
+            raise ValueError(f'Source recording order changed: {name}')
     if not frame.groupby('group_id').size().eq(4).all() or frame.group_id.nunique() != 1000:
         raise ValueError('Each of the 1000 recordings must have four spatial patches')
     for key in ['group_id', 'bin_sha256']:

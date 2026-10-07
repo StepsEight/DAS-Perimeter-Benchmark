@@ -20,3 +20,5 @@ Run this command from the repository root. The download is a versioned GitHub Re
 | `manifest.json` | Exact sizes, SHA-256 checksums and the versioned download URL |
 
 Data are licensed under [CC BY-NC 4.0](../LICENSE-DATA). See the [dataset guide](../docs/dataset.md) for MATLAB/HDF5 axis conventions, inverse min–max handling, zero padding and normalization.
+
+The [v1.0.1 dataset ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1) also includes the metadata, features and fixed splits listed above. Its root `LICENSE` is the full CC BY-NC 4.0 text, and its root `README.txt` explains standalone use. The downloader installs these as `LICENSE-DATA` and `data/README-download.txt` to preserve the repository's MIT `LICENSE`. For manual standalone extraction, use a separate folder. Code and checkpoints are distributed in the repository, not the dataset ZIP. All scientific data and split memberships are unchanged from v1.0.0.

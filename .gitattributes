@@ -9,3 +9,4 @@ data/*.csv -text
 data/*.json -text
 data/splits/*.csv -text
 LICENSE-DATA -text
+data/*.txt -text

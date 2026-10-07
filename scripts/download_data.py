@@ -20,16 +20,22 @@ def digest(path):
 def extract_verified(archive,manifest,destination):
     """Extract only the explicitly registered files; reject traversal and duplicates."""
     destination=Path(destination).resolve()
-    expected={r['path']:r for r in manifest['files'] if r.get('in_archive')}
+    records=[r for r in manifest['files'] if r.get('in_archive')]
+    expected={r.get('archive_path',r['path']):r for r in records}
+    if len(expected)!=len(records):
+        raise ValueError('Duplicate archive paths in manifest')
+    targets=[(destination/r['path']).resolve() for r in records]
+    if len(set(targets))!=len(targets):
+        raise ValueError('Duplicate installation paths in manifest')
     with zipfile.ZipFile(archive) as z:
         names=z.namelist()
         if len(names)!=len(set(names)) or set(names)!=set(expected):
             raise ValueError('Archive members do not match the release manifest')
         for name in names:
-            target=(destination/name).resolve()
-            if not target.is_relative_to(destination):
-                raise ValueError('Archive path escapes destination')
             record=expected[name]
+            target=(destination/record['path']).resolve()
+            if not (destination/name).resolve().is_relative_to(destination) or not target.is_relative_to(destination):
+                raise ValueError('Archive path escapes destination')
             if z.getinfo(name).file_size!=record['bytes']:
                 raise ValueError(f'Archive member size mismatch: {name}')
             if target.is_file() and digest(target)==record['sha256']:
