@@ -1,24 +1,34 @@
 # Data files
 
-The release has **4,000 samples**, five classes and four aligned representations. Download the large arrays with:
+The dataset has **4,000 samples across five classes**. All four representations share sample IDs, labels and fixed train/validation/test splits.
+
+## Included in the repository
+
+These small files are ready to use without downloading the MAT/NPZ arrays:
+
+| Path | Content |
+|---|---|
+| `handcrafted_features.csv` | Fifteen features per sample for the RBF-SVM |
+| `metadata.csv` | Sample IDs, labels, spatial channels, recording groups and split membership |
+| `class_mapping.json` | Numeric labels and event names |
+| `splits/{train,val,test}.csv` | Fixed sample IDs and array row indices |
+
+[Train the SVM in Colab](https://colab.research.google.com/github/StepsEight/DAS-Perimeter-Benchmark/blob/main/notebooks/quickstart.ipynb), or follow the [local quick start](../docs/quickstart.md).
+
+## Available in the dataset download
+
+| Path | Content |
+|---|---|
+| `spatiotemporal/*.mat` | Five class files, MATLAB single [2000,50,800] each |
+| `temporal/DAS_1D_2kHz_4000.mat` | Combined fixed-channel waveforms and metadata |
+| `time_frequency/stft.npz` | Float32 [4000,129,33] STFT maps, axes and IDs |
+
+Install the arrays from the repository root:
 
 ```bash
 python scripts/download_data.py
 ```
 
-Run this command from the repository root. The download is a versioned GitHub Release asset; the ordinary Git checkout keeps metadata and handcrafted features small and accessible.
+The [dataset ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1) also contains the small files listed above, a root `LICENSE` and `README.txt` for standalone use. It does not contain code or model checkpoints. [`manifest.json`](manifest.json) records sizes, SHA-256 checksums and the download URL.
 
-| Path | Content |
-|---|---|
-| `metadata.csv` | All sample IDs, labels, source groups, spatial channels and split memberships |
-| `class_mapping.json` | Fixed numeric labels and paper display names |
-| `splits/{train,val,test}.csv` | Fixed sample IDs and 0-based global row indices |
-| `handcrafted_features.csv` | Aligned 15-dimensional feature vectors |
-| `spatiotemporal/*.mat` | Five class files, MATLAB single [2000,50,800] each |
-| `temporal/DAS_1D_2kHz_4000.mat` | Self-contained fixed-channel waveforms and metadata |
-| `time_frequency/stft.npz` | Float32 [4000,129,33] log-power STFT maps and axes |
-| `manifest.json` | Exact sizes, SHA-256 checksums and the versioned download URL |
-
-Data are licensed under [CC BY-NC 4.0](../LICENSE-DATA). See the [dataset guide](../docs/dataset.md) for MATLAB/HDF5 axis conventions, inverse min–max handling, zero padding and normalization.
-
-The [v1.0.1 dataset ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1) also includes the metadata, features and fixed splits listed above. Its root `LICENSE` is the full CC BY-NC 4.0 text, and its root `README.txt` explains standalone use. The downloader installs these as `LICENSE-DATA` and `data/README-download.txt` to preserve the repository's MIT `LICENSE`. For manual standalone extraction, use a separate folder. Code and checkpoints are distributed in the repository, not the dataset ZIP. All scientific data and split memberships are unchanged from v1.0.0.
+See the [dataset guide](../docs/dataset.md) for array axes, normalization, padding and metadata fields. Data are licensed under [CC BY-NC 4.0](../LICENSE-DATA).

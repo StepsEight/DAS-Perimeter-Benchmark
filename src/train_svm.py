@@ -15,12 +15,12 @@ from sklearn.svm import SVC
 try:
     from .dataset import get_feature_data
     from .metrics import classification_metrics, save_evaluation
-    from .trainer import data_artifact_fingerprints, experiment_fingerprint, output_directory
+    from .run_utils import data_artifact_fingerprints, experiment_fingerprint, output_directory
     from .utils import dump_json, load_config, seed_everything, source_code_manifest
 except ImportError:
     from dataset import get_feature_data
     from metrics import classification_metrics, save_evaluation
-    from trainer import data_artifact_fingerprints, experiment_fingerprint, output_directory
+    from run_utils import data_artifact_fingerprints, experiment_fingerprint, output_directory
     from utils import dump_json, load_config, seed_everything, source_code_manifest
 
 
@@ -29,7 +29,7 @@ def train_svm(config):
     seed_everything(seed)
     output = output_directory(config, "svm")
     fingerprint = experiment_fingerprint(config, "svm")
-    data_fingerprints = data_artifact_fingerprints(config)
+    data_fingerprints = data_artifact_fingerprints(config, "svm")
     code_manifest = source_code_manifest()
     summary_path = output / "run_summary.json"
     if summary_path.exists():

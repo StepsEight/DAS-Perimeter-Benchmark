@@ -7,7 +7,6 @@ than fitting/evaluating again, so each selected model has one final test pass.
 
 import argparse
 import csv
-import hashlib
 import json
 import os
 from pathlib import Path
@@ -22,45 +21,18 @@ try:
     from .dataset import get_dataloaders
     from .metrics import classification_metrics, save_evaluation
     from .models import build_model, parameter_count
+    from .run_utils import data_artifact_fingerprints, experiment_fingerprint, output_directory
     from .utils import ROOT, dump_json, get_device, load_config, seed_everything, sha256_file, source_code_manifest
 except ImportError:
     from dataset import get_dataloaders
     from metrics import classification_metrics, save_evaluation
     from models import build_model, parameter_count
+    from run_utils import data_artifact_fingerprints, experiment_fingerprint, output_directory
     from utils import ROOT, dump_json, get_device, load_config, seed_everything, sha256_file, source_code_manifest
 
 
 def setting(config, name, default):
     return config.get("training", {}).get(name, config.get(name, default))
-
-
-def output_directory(config, method):
-    output_root = config.get("paths", {}).get("output_root", config.get("output_root", "outputs"))
-    root = Path(output_root)
-    if not root.is_absolute():
-        root = Path(ROOT) / root
-    output = root / method
-    output.mkdir(parents=True, exist_ok=True)
-    return output
-
-
-def experiment_fingerprint(config, method):
-    """Refuse accidental resume against a different protocol or fixed split."""
-    digest = hashlib.sha256(json.dumps(config, sort_keys=True, default=str).encode("utf-8"))
-    digest.update(method.encode("utf-8"))
-    for name, content_hash in data_artifact_fingerprints(config).items():
-        digest.update(name.encode("utf-8"))
-        digest.update(content_hash.encode("ascii"))
-    return digest.hexdigest()
-
-
-def data_artifact_fingerprints(config):
-    from dataset import verify_paths, data_directory
-    manifest_path = data_directory(config) / 'manifest.json'
-    manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-    paths = [record['path'] for record in manifest['files']]
-    verify_paths(paths, config)
-    return {record['path']: record['sha256'] for record in manifest['files']}
 
 
 def atomic_torch_save(payload, path):

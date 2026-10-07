@@ -2,23 +2,22 @@
 
 **Five event classes · 4,000 aligned samples · Four representations · One fixed evaluation protocol**
 
-Sharing well-documented field measurements helps the DAS community develop perimeter-security event recognition methods and compare them on common ground. We share this resource to provide an integrated online platform for data access and a unified benchmark for algorithm development. The dataset brings together five event classes, four aligned representations, fixed recording-group partitions, baseline implementations and validation-selected checkpoints, so researchers can reuse the measurements and evaluate new methods under the same protocol.
+Public DAS event-recognition datasets often focus on a particular data representation, with limited shared support for multiple common input forms. This makes it difficult for researchers to compare methods under a unified benchmark. We share this dataset to support the sensing community with **four aligned representations of the same measurements and a fixed evaluation protocol**. Together with baseline code and trained models, this resource provides a common starting point for developing, reproducing and comparing DAS perimeter-security event-recognition methods.
 
 **Important Notes:**
 
-- **Get the data:** download the [dataset ZIP (about 1.55 GB)](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1). It contains all four representations, metadata, fixed splits and standalone license/readme files. Code, model checkpoints and benchmark results are in this repository.
-- **Keep recordings together:** four spatial patches come from each source recording. Use the supplied chronological splits; randomly splitting individual patches can leak a recording across subsets.
-- **Start in your browser:** the [Colab notebook](https://colab.research.google.com/github/StepsEight/DAS-Perimeter-Benchmark/blob/main/notebooks/quickstart.ipynb) explores labels, splits and features without a large download; downloading the full arrays is optional. No GPU is needed for this tutorial.
-- **Use and contribute:** data, trained weights and documentation are for attributed, noncommercial use. We welcome reproducible benchmark comparisons and corrections through [Issues](https://github.com/StepsEight/DAS-Perimeter-Benchmark/issues).
+- **Start small:** [train the feature-based SVM in Colab](https://colab.research.google.com/github/StepsEight/DAS-Perimeter-Benchmark/blob/main/notebooks/quickstart.ipynb) using the included CSV. No full dataset download or GPU is needed.
+- **Get all representations:** the [dataset download (about 1.55 GB)](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1) contains the MAT files, STFT arrays, feature vectors, labels and fixed splits. Code and model checkpoints are in this repository.
+- **Compare consistently:** use the provided train/validation/test splits and select models on the validation set. See the [benchmark protocol](docs/benchmark.md).
+- **Use and contribute:** data and trained weights require attribution and noncommercial use. Questions, corrections and comparable benchmark results are welcome through [Issues](https://github.com/StepsEight/DAS-Perimeter-Benchmark/issues).
 
 ## 🚀 Overview
 
 - [Experimental setup](#experimental-setup)
 - [Dataset at a glance](#dataset)
 - [Four aligned representations](#representations)
-- [Download and quick start](#quick-start)
+- [Get started](#quick-start)
 - [Benchmark](#benchmark)
-- [Repository layout](#repository-layout)
 - [Citation and contact](#citation-and-contact)
 - [License](#license)
 
@@ -34,7 +33,7 @@ The measurements were collected with a single-pulse phase-sensitive optical time
 <a id="dataset"></a>
 ## 📊 Dataset at a glance
 
-| Event | Description | Samples | Train / validation / test |
+| Event | Description | Samples | Train / validation / test samples |
 |---|---|---:|---:|
 | Sunny background | Background without artificial disturbance in sunny weather | 800 | 480 / 160 / 160 |
 | Rainy background | Background without artificial disturbance in rainy weather | 800 | 480 / 160 / 160 |
@@ -43,14 +42,14 @@ The measurements were collected with a single-pulse phase-sensitive optical time
 | Bicycle | One person riding a bicycle around the sensing fiber | 800 | 480 / 160 / 160 |
 | **Total** | | **4,000** | **2,400 / 800 / 800** |
 
-The released sampling rate is **2 kHz**. Each space-time sample has **2,000 time points × 50 spatial channels**, with 1 m channel spacing and a 10 m gauge length. The fixed 1 s input includes **41 leading zeros and 1,959 measured points**. Single-channel representations use the fixed 25th channel of each patch.
+Each space-time sample contains **2,000 time points × 50 spatial channels**, sampled at **2 kHz**. The five classes have **800 samples each**.
 
-The split is chronological within each class. All four spatial patches from a source recording stay in the same subset. There are 1,000 source-recording groups, split 600 / 200 / 200. This prevents patches from the same recording from crossing partitions; independent physical-event or session boundaries are not available.
+Each recording contributes **four samples from different fiber positions**. These four samples always stay together when recordings are split chronologically within each class: **60% training, 20% validation and 20% testing**. This prevents samples from the same recording from appearing in different sets. File formats and processing details are in the [dataset guide](docs/dataset.md).
 
 <a id="representations"></a>
 ## 🧩 Four aligned representations
 
-Sizes below describe one sample, before adding a CNN feature-plane dimension.
+All representations describe the same 4,000 samples and use the same labels and splits.
 
 | Representation | Shape | Public file | Baseline |
 |---|---|---|---|
@@ -59,49 +58,38 @@ Sizes below describe one sample, before adding a CNN feature-plane dimension.
 | Spatiotemporal patch | 2,000 × 50 | `data/spatiotemporal/{class}.mat` | 2D-CNN |
 | Time-frequency map | 129 × 33 | `data/time_frequency/stft.npz` | STFT-CNN |
 
-[`data/metadata.csv`](data/metadata.csv) aligns every representation by `sample_id` and includes class labels, source-recording groups, spatial-channel ranges and fixed split membership. Internal labels are `background`, `digging`, `raining`, `vehicle`, `walking`; **`vehicle` means bicycle** in this dataset.
+Match samples across files using `sample_id` in [`data/metadata.csv`](data/metadata.csv). In filenames and labels, **`vehicle` means bicycle**.
 
 ![Space-time, temporal and STFT examples for the five event classes](assets/representations.png)
 
-*Figure 2. Illustrative space-time, temporal and STFT views for sunny background, rainy background, walking, digging and bicycle events. Handcrafted features form the fourth released representation; all four are aligned by sample ID.*
+*Examples of sunny background, rainy background, walking, digging and bicycle events. Rows show space-time, temporal and STFT views; the fourth representation is a 15-dimensional feature vector.*
 
 <a id="quick-start"></a>
-## 📥 Download and quick start
+## 📥 Get started
 
-| Download | What is included? |
-|---|---|
-| [Dataset ZIP, v1.0.1](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.1/das-perimeter-v1.0.1.zip) · about 1.55 GB | Five class-specific 2D MAT files, one 1D MAT file, STFT arrays, 15-feature vectors, sample metadata, class mapping, fixed split files, root `LICENSE` and `README.txt` |
-| [Repository / Source code ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/archive/refs/tags/v1.0.1.zip) | Code, notebook, best checkpoints, benchmark results, figures, documentation, metadata and feature vectors; **no large MAT/NPZ arrays** |
-
-The original **v1.0.0 dataset ZIP** contains the five 2D MAT files, the 1D MAT file, STFT arrays and `LICENSE-DATA`. Version **v1.0.1** adds the existing feature vectors/metadata/splits and standalone documentation to the package. **Measurements, labels, split memberships, checkpoints and benchmark results are unchanged.** Neither dataset ZIP includes code or model checkpoints.
-
-### ☁️ Explore in Colab
+### ☁️ Train an SVM in your browser
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/StepsEight/DAS-Perimeter-Benchmark/blob/main/notebooks/quickstart.ipynb)
 
-Open the notebook and run the cells from the top. First inspect the sample index, class counts, fixed splits and handcrafted features. To plot aligned space-time, temporal and STFT views, set `DOWNLOAD_FULL_DATA = True` in the optional download cell. Allow about 3.2 GB of free runtime storage for the archive and extracted data. This is a CPU data-exploration tutorial; use the pinned local environment below for reproducing the published benchmark.
+Run the notebook to inspect the feature CSV, train an RBF-SVM, select its parameters on the validation set, and evaluate the selected model on the test set. You can also download the full arrays to visualize the same sample in three signal representations.
 
-### 💻 Python and MATLAB
+### 💻 Work locally
 
-Use Python 3.12. Create and activate a virtual environment, then:
+Clone the repository or [download the code ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/archive/refs/heads/main.zip). For **SVM only**, no large data download is needed. Use Python 3.12 in a virtual environment:
 
 ```bash
 git clone https://github.com/StepsEight/DAS-Perimeter-Benchmark.git
 cd DAS-Perimeter-Benchmark
-python -m pip install -r requirements-data.txt
-python scripts/download_data.py
-python scripts/verify_data.py
-python examples/read_sample.py --sample-id walking_000241
+python -m pip install -r requirements-svm.txt
+python scripts/train.py --model svm
 ```
 
-The downloader retrieves the versioned [Release ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.1/das-perimeter-v1.0.1.zip), verifies SHA-256 and installs the data into the paths above. Alternatively, download the ZIP manually and run `python scripts/download_data.py --archive /path/to/das-perimeter-v1.0.1.zip`. The official downloader maps the archive's data `LICENSE` to `LICENSE-DATA`, preserving the repository's MIT code license. For standalone use, extract the ZIP into a **separate folder**, then read its root `README.txt` and `LICENSE`.
-
-For MATLAB, run [`examples/read_sample.m`](examples/read_sample.m) from the repository root. Both temporal and spatiotemporal files are native MATLAB v7.3 MAT files. Full shapes, axis conventions and normalization are documented in the [dataset guide](docs/dataset.md).
+For **MATLAB, signal visualization or the CNN baselines**, also [download the dataset](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.1/das-perimeter-v1.0.1.zip). Follow the [quick-start guide](docs/quickstart.md) for setup, automatic data installation, MATLAB/Python examples and checkpoint evaluation.
 
 <a id="benchmark"></a>
 ## 🏁 Benchmark
 
-All methods use the same sample IDs and split. Results below are the paper's saved **test** results, in percent. Model selection uses **validation Macro-F1**, with each class weighted equally and both precision and recall considered.
+All methods use the same samples and fixed splits. Models are selected by **validation Macro-F1**. The paper's **test results (%)** are:
 
 | Method | Accuracy | Macro-P | Macro-R | Macro-F1 |
 |---|---:|---:|---:|---:|
@@ -110,32 +98,7 @@ All methods use the same sample IDs and split. Results below are the paper's sav
 | 2D-CNN | 88.625 | 90.518 | 88.625 | 88.093 |
 | STFT-CNN | **95.625** | **95.715** | **95.625** | **95.633** |
 
-Train the four baselines or evaluate a released checkpoint:
-
-```bash
-python -m pip install -r requirements.txt
-python scripts/train.py --model all
-python scripts/evaluate.py --model stft_cnn --split test
-```
-
-Training settings are in [`config.yaml`](config.yaml). Runs are written to `runs/`. The released [best checkpoints](checkpoints/README.md), [per-sample predictions](results/predictions) and [machine-readable metrics](results/summary.csv) are provided. To regenerate and check the single-channel representations from the five MAT files, run `python scripts/preprocess.py --check`.
-
-The CNNs were trained for 100 epochs with seed 42. The published results use one fixed chronological split and one seed; they compare representation–model combinations, not a controlled representation-only ablation. See the [benchmark protocol](docs/benchmark.md) for architectures, normalization, hyperparameters and evaluation details.
-
-<a id="repository-layout"></a>
-## 🗂️ Repository layout
-
-```text
-data/           Sample metadata, fixed splits, features and downloaded arrays
-src/            Four baseline implementations and preprocessing functions
-scripts/        Download, verify, preprocess, train and evaluate
-examples/       Python and MATLAB data readers
-notebooks/      Colab data-exploration tutorial
-checkpoints/    Best validation-selected models
-results/        Paper metrics, predictions and training histories
-docs/           Dataset and benchmark specifications
-assets/         The paper's system and representation figures
-```
+The [trained checkpoints](checkpoints/README.md), [per-sample predictions](results/predictions) and [metrics](results/summary.csv) are available for comparison. See the [benchmark guide](docs/benchmark.md) for architectures, hyperparameters, preprocessing and evaluation rules, or the [quick-start guide](docs/quickstart.md) to run them.
 
 <a id="citation-and-contact"></a>
 ## 📚 Citation and contact

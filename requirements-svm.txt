@@ -1,0 +1,6 @@
+# Python 3.12; CPU SVM training/evaluation from the included feature CSV.
+# No PyTorch or large MAT/NPZ download is required.
+-r requirements-data.txt
+matplotlib==3.10.6
+scikit-learn==1.7.2
+joblib==1.5.2

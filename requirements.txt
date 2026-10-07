@@ -1,5 +1,5 @@
-# Python 3.12. Tested versions; exact CUDA build/device recorded in reports/environment.json.
-# Install GPU torch first from the official cu128 index (README), then this file.
+# Python 3.12. Tested versions; exact CUDA build/device recorded in results/environment.json.
+# CPU-only SVM users can install requirements-svm.txt instead.
 # This project does not require torchvision or torchaudio.
 numpy==2.3.5
 scipy==1.16.3

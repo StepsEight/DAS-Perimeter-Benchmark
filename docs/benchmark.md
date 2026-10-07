@@ -1,6 +1,10 @@
 # Benchmark protocol
 
-The benchmark uses the five classes, four aligned representations and fixed chronological source-group split described in the [dataset guide](dataset.md). All results are from the paper's original seed-42 runs. Packaging the release did not retrain or select models.
+The benchmark uses the five classes, four aligned representations and fixed chronological source-group split described in the [dataset guide](dataset.md). The reference results use seed 42. For installation and training commands, see the [quick-start guide](quickstart.md).
+
+## Feature-only SVM workflow
+
+The feature CSV, labels and fixed splits are included in the repository. SVM training and evaluation need only `requirements-svm.txt`; no MAT/NPZ download or PyTorch installation is required. The [Colab notebook](https://colab.research.google.com/github/StepsEight/DAS-Perimeter-Benchmark/blob/main/notebooks/quickstart.ipynb) runs this same training implementation and saves its selected model and results separately from the reference checkpoints.
 
 ## Models
 

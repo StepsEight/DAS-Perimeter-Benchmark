@@ -7,7 +7,7 @@
 | `cnn2d.pt` | 2D-CNN | 10 | 0.9987499878 |
 | `stft_cnn.pt` | STFT-CNN | 79 | 0.9685727428 |
 
-CNN files contain `model_state`, `method`, `class_names`, `epoch`, `parameter_count` and validation metrics. Their weights are the original selected weights; only optimizer/RNG state and machine-specific paths have been removed. They support `torch.load(path, map_location='cpu', weights_only=True)`. They are inference checkpoints; newly trained runs save full resumable state in `runs/`.
+CNN files contain `model_state`, `method`, `class_names`, `epoch`, `parameter_count` and validation metrics. They support `torch.load(path, map_location='cpu', weights_only=True)`. They are inference checkpoints; newly trained runs save full resumable state in `runs/`.
 
 The SVM file contains `model`, `scaler`, `class_names` and selected parameters. Its scaler was fitted on training data only. Use joblib files from this trusted release, since the format uses Python pickle.
 
