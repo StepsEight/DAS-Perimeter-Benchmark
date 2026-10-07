@@ -29,6 +29,6 @@ Install the arrays from the repository root:
 python scripts/download_data.py
 ```
 
-The [dataset ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1) also contains the small files listed above, a root `LICENSE` and `README.txt` for standalone use. It does not contain code or model checkpoints. [`manifest.json`](manifest.json) records sizes, SHA-256 checksums and the download URL.
+The [dataset ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.2) also contains the small files listed above, a root `LICENSE` and `README.txt` for standalone use. It does not contain code or model checkpoints. [`manifest.json`](manifest.json) records sizes, SHA-256 checksums and the download URL.
 
 See the [dataset guide](../docs/dataset.md) for array axes, normalization, padding and metadata fields. Data are licensed under [CC BY-NC 4.0](../LICENSE-DATA).

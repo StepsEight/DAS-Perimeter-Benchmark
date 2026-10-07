@@ -1,11 +1,11 @@
-DAS Perimeter Benchmark - standalone dataset package v1.0.1
+DAS Perimeter Benchmark - standalone dataset package v1.0.2
 
 An Open-Source Distributed Acoustic Sensing Dataset and Benchmark for
 Perimeter-Security Event Recognition
-Authors: Yinghuan Li, Jingming Zhang, Changyuan Yu, Alan Pak Tao Lau
+Authors: Yinghuan Li, Changyuan Yu, Alan Pak Tao Lau
 Contact: ying-huan.li@connect.polyu.hk
 Repository: https://github.com/StepsEight/DAS-Perimeter-Benchmark
-Version: https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1
+Version: https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.2
 
 LICENSE AND USE
 All contents of this archive are licensed under Creative Commons Attribution-
@@ -46,11 +46,11 @@ For standalone use, extract this archive into its own folder, preserving
 LICENSE and README.txt. MATLAB: load a class MAT file and inspect instances.
 Python: read v7.3 MAT with h5py, NPZ with numpy.load(allow_pickle=False).
 For the full benchmark, clone the repository and use its downloader:
-  python scripts/download_data.py --archive /path/to/das-perimeter-v1.0.1.zip
+  python scripts/download_data.py --archive /path/to/das-perimeter-v1.0.2.zip
 It maps this archive's LICENSE to LICENSE-DATA without replacing the code's
 MIT LICENSE. Do not manually unpack this archive over the code repository.
 Code, checkpoints, figures, readers and benchmark results are in the GitHub
 repository, not this dataset ZIP. See its CITATION.cff for citation metadata.
 
-v1.0.1 changes packaging only: scientific data, labels and splits are identical
+v1.0.2 changes packaging only: scientific data, labels and splits are identical
 to v1.0.0. The existing feature table and metadata/splits are now included.

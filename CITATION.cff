@@ -6,19 +6,16 @@ authors:
   - family-names: Li
     given-names: Yinghuan
     affiliation: The Hong Kong Polytechnic University
-  - family-names: Zhang
-    given-names: Jingming
-    affiliation: The Hong Kong Polytechnic University; Southern University of Science and Technology
   - family-names: Yu
     given-names: Changyuan
     affiliation: The Hong Kong Polytechnic University
   - family-names: Lau
     given-names: Alan Pak Tao
     affiliation: The Hong Kong Polytechnic University
-version: 1.0.1
+version: 1.0.2
 date-released: 2026-10-07
 repository-code: "https://github.com/StepsEight/DAS-Perimeter-Benchmark"
-url: "https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1"
+url: "https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.2"
 license: CC-BY-NC-4.0
 keywords:
   - distributed acoustic sensing

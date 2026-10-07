@@ -52,10 +52,10 @@ python scripts/verify_data.py
 python examples/read_sample.py --sample-id walking_000241
 ```
 
-The downloader verifies SHA-256 and installs the arrays in the expected paths. If you already have the [dataset ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.1/das-perimeter-v1.0.1.zip), use:
+The downloader verifies SHA-256 and installs the arrays in the expected paths. If you already have the [dataset ZIP](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.2/das-perimeter-v1.0.2.zip), use:
 
 ```bash
-python scripts/download_data.py --archive /path/to/das-perimeter-v1.0.1.zip
+python scripts/download_data.py --archive /path/to/das-perimeter-v1.0.2.zip
 ```
 
 For standalone MATLAB/data use, extract the ZIP into a **separate folder** and read its root `README.txt` and `LICENSE`. Avoid manually extracting over the code repository: the archive's `LICENSE` covers data under CC BY-NC 4.0, while the repository's `LICENSE` covers code under MIT. The official downloader handles this distinction automatically.

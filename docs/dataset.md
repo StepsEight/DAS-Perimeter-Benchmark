@@ -24,7 +24,7 @@ For storage, each valid 1959×50 patch was min–max scaled to [0,1] in double p
 
 ## Files and array conventions
 
-All large arrays are distributed in the [v1.0.1 Release](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1). [`data/manifest.json`](../data/manifest.json) records file sizes and SHA-256 values. The repository's commands use these public files through relative paths.
+All large arrays are distributed in the [v1.0.2 Release](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.2). [`data/manifest.json`](../data/manifest.json) records file sizes and SHA-256 values. The repository's commands use these public files through relative paths.
 
 ### Spatiotemporal: five class MAT files
 

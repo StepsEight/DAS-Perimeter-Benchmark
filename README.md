@@ -7,7 +7,7 @@ Public DAS event-recognition datasets often focus on a particular data represent
 **Important Notes:**
 
 - **Start small:** [train the feature-based SVM in Colab](https://colab.research.google.com/github/StepsEight/DAS-Perimeter-Benchmark/blob/main/notebooks/quickstart.ipynb) using the included CSV. No full dataset download or GPU is needed.
-- **Get all representations:** the [dataset download (about 1.55 GB)](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.1) contains the MAT files, STFT arrays, feature vectors, labels and fixed splits. Code and model checkpoints are in this repository.
+- **Get all representations:** the [dataset download (about 1.55 GB)](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/tag/v1.0.2) contains the MAT files, STFT arrays, feature vectors, labels and fixed splits. Code and model checkpoints are in this repository.
 - **Compare consistently:** use the provided train/validation/test splits and select models on the validation set. See the [benchmark protocol](docs/benchmark.md).
 - **Use and contribute:** data and trained weights require attribution and noncommercial use. Questions, corrections and comparable benchmark results are welcome through [Issues](https://github.com/StepsEight/DAS-Perimeter-Benchmark/issues).
 
@@ -84,7 +84,7 @@ python -m pip install -r requirements-svm.txt
 python scripts/train.py --model svm
 ```
 
-For **MATLAB, signal visualization or the CNN baselines**, also [download the dataset](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.1/das-perimeter-v1.0.1.zip). Follow the [quick-start guide](docs/quickstart.md) for setup, automatic data installation, MATLAB/Python examples and checkpoint evaluation.
+For **MATLAB, signal visualization or the CNN baselines**, also [download the dataset](https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.2/das-perimeter-v1.0.2.zip). Follow the [quick-start guide](docs/quickstart.md) for setup, automatic data installation, MATLAB/Python examples and checkpoint evaluation.
 
 <a id="benchmark"></a>
 ## 🏁 Benchmark
@@ -103,7 +103,7 @@ The [trained checkpoints](checkpoints/README.md), [per-sample predictions](resul
 <a id="citation-and-contact"></a>
 ## 📚 Citation and contact
 
-This repository accompanies **“An Open-Source Distributed Acoustic Sensing Dataset and Benchmark for Perimeter-Security Event Recognition”**, by **Yinghuan Li, Jingming Zhang, Changyuan Yu, and Alan Pak Tao Lau**. Publication details will be added when available. Please cite the dataset version using [`CITATION.cff`](CITATION.cff), and identify the protocol and representation used in your work.
+This repository accompanies **“An Open-Source Distributed Acoustic Sensing Dataset and Benchmark for Perimeter-Security Event Recognition”**, by **Yinghuan Li, Changyuan Yu, and Alan Pak Tao Lau**. Publication details will be added when available. Please cite the dataset version using [`CITATION.cff`](CITATION.cff), and identify the protocol and representation used in your work.
 
 Questions, corrections and benchmark contributions are welcome through [GitHub Issues](https://github.com/StepsEight/DAS-Perimeter-Benchmark/issues).  
 Contact: **Yinghuan Li**, The Hong Kong Polytechnic University, [ying-huan.li@connect.polyu.hk](mailto:ying-huan.li@connect.polyu.hk).  

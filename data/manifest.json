@@ -1,16 +1,16 @@
 {
   "dataset": "DAS Perimeter Benchmark",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "instances": 4000,
   "classes": 5,
   "source_recordings": 1000,
   "sampling_rate_hz": 2000,
   "license": "CC-BY-NC-4.0",
   "archive": {
-    "name": "das-perimeter-v1.0.1.zip",
-    "bytes": 1551530396,
-    "sha256": "c19b74011f1a035374b4c7a78ff121187b4c33578188b100449d2feff0438513",
-    "url": "https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.1/das-perimeter-v1.0.1.zip"
+    "name": "das-perimeter-v1.0.2.zip",
+    "bytes": 1551530380,
+    "sha256": "ac4e979b2cb5f96222e022cf8a655422040e72dd3c9de99dd1e31d68ff54456e",
+    "url": "https://github.com/StepsEight/DAS-Perimeter-Benchmark/releases/download/v1.0.2/das-perimeter-v1.0.2.zip"
   },
   "files": [
     {
@@ -101,8 +101,8 @@
     {
       "path": "data/README-download.txt",
       "archive_path": "README.txt",
-      "bytes": 3286,
-      "sha256": "bff5e07c4297eb8ed0d863fbcb57c00412509bd13f7ec8f895534094c7c80d64",
+      "bytes": 3270,
+      "sha256": "76f75895e985f75d104e5b0b242100efc45f5dc15c6f5c1626b0662bd38f34c6",
       "in_archive": true
     }
   ],
